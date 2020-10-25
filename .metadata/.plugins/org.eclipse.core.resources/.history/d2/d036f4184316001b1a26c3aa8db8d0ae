@@ -1,0 +1,25 @@
+package com.spring.agendalive.document;
+
+import javax.persistence.Id;
+import java.time.LocalDateTime;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
+
+@Entity
+public class LiveDocument {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String liveName;
+    private String channelName;
+    private LocalDateTime liveDate;
+    private String liveLink;
+    private LocalDateTime registrationDate;
+    
+    
+
+}
