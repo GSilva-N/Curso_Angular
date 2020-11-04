@@ -1,0 +1,58 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="signup-form">
+    <form class='bg-dark' action="/examples/actions/confirmation.php" method="post">
+        <h2>Cadastre-se</h2>
+        <p>Preencha o formulários para criar uma conta</p>
+        <hr>
+        <div class="form-group ">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <span class="fa fa-user"></span>
+                    </span>
+                </div>
+                <input type="text" class="form-control" name="username" placeholder="Nome" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-paper-plane"></i>
+                    </span>
+                </div>
+                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                    </span>
+                </div>
+                <input type="text" class="form-control" name="password" placeholder="Senha" required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">
+                        <i class="fa fa-lock"></i>
+                        <i class="fa fa-check"></i>
+                    </span>
+                </div>
+                <input type="text" class="form-control" name="confirm_password" placeholder="Confirme a senha"
+                    required="required">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-check-label"><input type="checkbox" required="required"> Aceito os <a href="#">Termos
+                    de uso</a> &amp; <a href="#">Política de Privacidade</a></label>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+        </div>
+    </form>
+</div>
