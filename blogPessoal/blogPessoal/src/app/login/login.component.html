@@ -1,7 +1,6 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
-
 <div class="container my-5 ">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
@@ -19,17 +18,19 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Usuário">
+                        <input type="email" class="form-control" placeholder="Usuário" [(ngModel)]='userLogin.usuario'
+                            name="usuario">
 
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="Senha">
+                        <input type="password" class="form-control" placeholder="Senha" [(ngModel)]='userLogin.senha'
+                            name="senha">
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Login" class="btn float-right login_btn">
+                        <input type="submit" value="Login" class="btn float-right login_btn" (click)='login()'>
                     </div>
                 </form>
             </div>

@@ -12,7 +12,8 @@
                         <span class="fa fa-user"></span>
                     </span>
                 </div>
-                <input type="text" class="form-control" name="username" placeholder="Nome" required="required">
+                <input type="text" class="form-control" name="username" placeholder="Nome" required="required"
+                    [(ngModel)]='user.nome'>
             </div>
         </div>
         <div class="form-group">
@@ -22,7 +23,8 @@
                         <i class="fa fa-paper-plane"></i>
                     </span>
                 </div>
-                <input type="email" class="form-control" name="email" placeholder="Email" required="required">
+                <input type="email" class="form-control" name="email" placeholder="Email" required="required"
+                    [(ngModel)]='user.usuario'>
             </div>
         </div>
         <div class="form-group">
@@ -32,7 +34,8 @@
                         <i class="fa fa-lock"></i>
                     </span>
                 </div>
-                <input type="text" class="form-control" name="password" placeholder="Senha" required="required">
+                <input type="password" class="form-control" name="password" placeholder="Senha" required="required"
+                    (input)='conferirSenha($event)' value="{{senha}}">
             </div>
         </div>
         <div class="form-group">
@@ -43,8 +46,8 @@
                         <i class="fa fa-check"></i>
                     </span>
                 </div>
-                <input type="text" class="form-control" name="confirm_password" placeholder="Confirme a senha"
-                    required="required">
+                <input type="password" class="form-control" name="confirm_password" placeholder="Confirme a senha"
+                    required="required" [(ngModel)]='user.senha'>
             </div>
         </div>
         <div class="form-group">
@@ -52,7 +55,7 @@
                     de uso</a> &amp; <a href="#">Política de Privacidade</a></label>
         </div>
         <div class="form-group d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary btn-lg">Cadastrar</button>
+            <button type="submit" class="btn btn-primary btn-lg" (click)='cadastrar()'>Cadastrar</button>
         </div>
     </form>
 </div>
