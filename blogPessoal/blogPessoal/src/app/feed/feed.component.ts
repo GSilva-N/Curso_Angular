@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Postagem } from '../model/Postagem';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { PostagemService } from '../service/postagem.service';
 import { TemaService } from '../service/tema.service';
 
@@ -16,18 +18,29 @@ export class FeedComponent implements OnInit {
 
   postagem: Postagem = new Postagem()
   listaPostagens: Postagem[]
-
+  titulo: string
 
   tema: Tema = new Tema()
   listaTemas: Tema[]
   idTema: number
+  descricaoTema: string
 
   constructor(
     private postagemService: PostagemService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private alert: AlertasService,
+    private router: Router
   ) { }
 
   ngOnInit() {
+
+    let token = localStorage.getItem('token')
+
+    if (token == null) {
+      this.router.navigate(['/login'])
+      this.alert.showAlertInfo('Faça o Login antes de entrar no feed')
+    }
+
     window.scroll(0, 0)
     this.findAllPostagens()
     this.findAllTemas()
@@ -45,17 +58,15 @@ export class FeedComponent implements OnInit {
     this.postagem.tema = this.tema
 
     if (this.postagem.tema == null || this.postagem.texto == null || this.postagem.tema == null) {
-      alert('Preencha todos os campos antes de publicar!')
+      this.alert.showAlertDanger('Preencha todos os campos antes de publicar!')
     } else {
       this.postagemService.postPostagem(this.postagem).subscribe((resp: Postagem) => {
         this.postagem = resp
         this.postagem = new Postagem()
-        alert('Postagem realizada com sucesso!')
+        this.alert.showAlertSuccess('Postagem realizada com sucesso!')
         this.findAllPostagens
       })
-
     }
-
   }
 
   findAllTemas() {
@@ -68,6 +79,28 @@ export class FeedComponent implements OnInit {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp
     })
+  }
+
+  findByTituloPostagem() {
+
+    if (this.titulo == '') {
+      this.findAllPostagens()
+    } else {
+      this.postagemService.getByTituloPostagem(this.titulo).subscribe((resp: Postagem[]) => {
+        this.listaPostagens = resp
+      })
+    }
+  }
+
+  findByDescricaoTema() {
+    if (this.descricaoTema == "") {
+      this.findAllTemas()
+    } else {
+      this.temaService.getByDescricaoTema(this.descricaoTema).subscribe((resp: Tema[]) => {
+        this.listaTemas = resp
+      })
+    }
+
   }
 
 }
