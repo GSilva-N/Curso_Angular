@@ -44,4 +44,13 @@
         <input type="text" (keyup)="onKeyUp($event)">
         <p>Valor atual: {{valorAtual}}</p>
     </article>
+
+    <article>
+        <h1>Two-Way Data Binding</h1>
+
+        <input type="text" [(ngModel)]="nome">
+        <p>Você digitou o nome: {{nome}}</p>
+
+        <app-output-property [valor]="valorInicial" (mudouValor)="onMudouValor($event)"></app-output-property>
+    </article>
 </section>
